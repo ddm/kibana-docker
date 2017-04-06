@@ -13,8 +13,11 @@ RUN apk --no-cache add --virtual build-dependencies \
     npm install &&\
     apk del --purge build-dependencies &&\
     rm -rf /var/cache/apk/* &&\
+    rm -rf /root/* &&\
+    rm -rf /tmp/* &&\
     adduser -D -u 1000 kibana &&\
-    find ${KIBANA_PATH} -print | xargs chown kibana:kibana
+    mkdir -p  ${KIBANA_PATH}/conf/ &&\
+    chown -R kibana:kibana ${KIBANA_PATH}
 
 COPY  kibana.yml ${KIBANA_PATH}/conf/kibana.yml
 
