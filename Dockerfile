@@ -7,9 +7,8 @@ RUN apk --no-cache add --virtual build-dependencies \
       build-base \
       python \
       git &&\
-    git clone https://github.com/ddm/kibana.git ${KIBANA_PATH} &&\
+    git clone --depth 1 --branch v${KIBANA_VERSION} https://github.com/ddm/kibana.git ${KIBANA_PATH} &&\
     cd ${KIBANA_PATH} &&\
-    git checkout v${KIBANA_VERSION} &&\
     npm install &&\
     apk del --purge build-dependencies &&\
     rm -rf /var/cache/apk/* &&\
