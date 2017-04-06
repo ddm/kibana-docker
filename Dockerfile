@@ -16,11 +16,11 @@ RUN apk --no-cache add --virtual build-dependencies \
     rm -rf /root/* &&\
     rm -rf /tmp/* &&\
     adduser -D -u 1000 kibana &&\
-    mkdir -p  ${KIBANA_PATH}/conf/ &&\
+    mkdir -p  ${KIBANA_PATH}/config/ &&\
     chown -R kibana:kibana ${KIBANA_PATH}
 
-COPY kibana.yml ${KIBANA_PATH}/conf/kibana.yml
+COPY kibana.yml ${KIBANA_PATH}/config/kibana.yml
 
 USER kibana
 WORKDIR ${KIBANA_PATH}
-CMD /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/conf/kibana.yml
+CMD /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/config/kibana.yml
