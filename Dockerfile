@@ -18,5 +18,6 @@ RUN apk --no-cache add --virtual build-dependencies \
 
 COPY  kibana.yml ${KIBANA_PATH}/conf/kibana.yml
 
+USER kibana
 WORKDIR ${KIBANA_PATH}
-CMD  /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/conf/kibana.yml
+CMD  NODE_ENV=production /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/conf/kibana.yml
