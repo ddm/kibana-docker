@@ -2,6 +2,7 @@ FROM quay.io/dimdm/node
 
 ARG KIBANA_VERSION=5.3.0
 ARG KIBANA_PATH=/kibana
+ENV NODE_ENV=production
 
 RUN apk --no-cache add --virtual build-dependencies \
       build-base \
@@ -18,8 +19,9 @@ RUN apk --no-cache add --virtual build-dependencies \
     mkdir -p  ${KIBANA_PATH}/conf/ &&\
     chown -R kibana:kibana ${KIBANA_PATH}
 
-COPY  kibana.yml ${KIBANA_PATH}/conf/kibana.yml
+COPY kibana.yml ${KIBANA_PATH}/conf/kibana.yml
 
 USER kibana
+VOLUME ${KIBANA_PATH}/conf/kibana.yml
 WORKDIR ${KIBANA_PATH}
-CMD  NODE_ENV=production /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/conf/kibana.yml
+CMD /kibana/bin/kibana -p 5601 -e http://elasticsearch:9200/ -c /kibana/conf/kibana.yml
