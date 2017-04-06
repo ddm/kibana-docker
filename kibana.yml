@@ -1,4 +1,6 @@
 server.name: "kibana"
+server.port: 5601
+server.host: "kibana"
 elasticsearch.url: http://elasticsearch:9200
 xpack.security.enabled: false
 xpack.monitoring.ui.container.elasticsearch.enabled: true
