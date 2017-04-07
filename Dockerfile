@@ -1,4 +1,4 @@
-FROM quay.io/dimdm/node
+FROM dimdm/node
 
 ARG KIBANA_VERSION=5.3.0
 ARG KIBANA_PATH=/kibana
