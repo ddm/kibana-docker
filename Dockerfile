@@ -1,6 +1,6 @@
-FROM dimdm/node
+FROM dimdm/node:6.10.3
 
-ARG KIBANA_VERSION=5.3.0
+ARG KIBANA_VERSION=5.4.0
 ARG KIBANA_PATH=/kibana
 ENV NODE_ENV=production
 
