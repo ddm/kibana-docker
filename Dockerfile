@@ -1,4 +1,4 @@
-FROM dimdm/node:8.1.4
+FROM dimdm/node:6.11.1
 
 ARG KIBANA_VERSION=5.4.0
 ARG KIBANA_PATH=/kibana
